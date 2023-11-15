@@ -1,0 +1,76 @@
+.principal-layout{
+    min-height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.table-container{
+    display: grid;
+    height:50px;
+    grid-template-columns: auto auto auto;
+    border: 1px solid black;
+    text-align: center;
+
+}
+.table-content{
+    display: grid;
+    height:50px;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+}
+
+.word-container{
+    border-right:1px solid black;
+}
+
+.date-container{
+    border-right:1px solid black;
+}
+
+
+.modal-container{
+    max-height: 100vh;
+    position: absolute;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+.close-button{
+    background-color: red;
+    border-radius:50%;
+
+    &:hover{
+        background-color: rgb(109, 17, 17);
+        cursor: pointer;
+    }
+}
+
+.closeButton-container{
+    display: flex;
+    justify-content: end;
+}
+
+.modal-text{
+    width: 100%;
+}
+
+.delete-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border:1px solid black;
+    width: 60%;
+    height:60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

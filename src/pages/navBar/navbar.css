@@ -1,0 +1,42 @@
+
+
+.header{
+    height: 100px;
+    background-color: #347ab4;
+    color:#ffffff;
+    width: 100%;
+    display: flex;
+}
+
+.menu-section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.links{
+    display: flex;
+    padding: 10px;
+}
+
+.link{
+    margin-right: 5px;
+}
+
+.footer-container{
+    height: 100px;
+    width: 100%;
+    background-color: #347ab4;
+    color:#ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom:0
+}
+
+.logo-container{
+    height:50px;
+    width:100px;
+}
