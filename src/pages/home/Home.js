@@ -7,18 +7,9 @@ const Home = () => {
     const [searchedWord,setSearchedWord]=useState('');
     const [getTime, setGetTime]=useState('');
     const [displayedData,setDisplayedData]=useState([]);
-    const [allData,setAllData]=useState({
-        data:{},
-        date:''
-    })
+    
     const [toggleModal, setToggleModal]=useState(false);
     const [toggleDeleteModal, setToggleDeleteModal]=useState(false);
-
-    const card=
-        <div className='card-container'> 
-            <button onClick={()=>console.log((new Date()).getMinutes())}>data</button>
-        </div>
-    
 
     const searchInputWord=async(event)=>{
         event.preventDefault();
@@ -28,11 +19,12 @@ const Home = () => {
             var result = await response.json();
             setGetTime(new Date());
             console.log(result)
-            console.log(getTime)
+
         }catch (error) {
             console.error(error);
         }
         const updatedTable=[...displayedData, result];
+        updatedTable.sort((a, b) => a[0].word.localeCompare(b[0].word));
        
         setDisplayedData(updatedTable)
         console.log(displayedData)
@@ -45,7 +37,7 @@ const Home = () => {
                  key={index}
             >
                 <p className='word-container'>{data[0].word}</p>
-                <p className='date-container'>data</p>
+                <p className='date-container'>{`${getTime.getDate()}.${getTime.getMonth()}.${getTime.getFullYear()}`}</p>
                 <div className='actions-container'>
                     <button onClick={()=>setToggleModal(true)}>View </button>
                     <button onClick={()=>setToggleDeleteModal(true)}>Delete</button>
@@ -71,6 +63,9 @@ const Home = () => {
         )
     })
 
+    function deleteSession(word){
+        setDisplayedData(prevValue=>prevValue.filter(wordObj=>wordObj.word !== word));
+    }
 
     return (
     <div className='principal-layout'>
@@ -95,6 +90,8 @@ const Home = () => {
                             name='searchedWord'
                             value={searchedWord}
                             onChange={(e)=>setSearchedWord(e.target.value)}
+                            pattern="[A-Za-z]+" 
+                            maxlength="100"
                             required
                     />
                     <button type='submit'>Search Word</button>
